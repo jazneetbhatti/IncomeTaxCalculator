@@ -20,40 +20,44 @@
 	<body>
 		<div id="form-wrapper">
 			<form method="post" action="store-income-details.php" id="income-details-form">
-				<select id="financial-month" name="financial-month">
-					<option value="January">January</option>
-					<option value="February">February</option>
-					<option value="March">March</option>
-					<option value="April">April</option>
-					<option value="May">May</option>
-					<option value="June">June</option>
-					<option value="July">July</option>
-					<option value="August">August</option>
-					<option value="September">September</option>
-					<option value="October">October</option>
-					<option value="November">November</option>
-					<option value="December">December</option>
-				</select>
-				<div><label>Pay Band : </label><input id="pay-band" name="pay-band" type="text" /></div>
-				<div><label>Grade Pay : </label><input id="grade-pay" name="grade-pay" type="text"/></div>
-				<div><label>Dearness Allowance : </label><input id="da" name="da" type="text"/></div>
-				<div><label>Housing Rent Allowance : </label><input id="hra" name="hra" type="text"/></div>
-				<div><label>Travelling Allowance : </label><input id="ta" name="ta" type="text"/></div>
-				<div><label>Wardenship : </label><input id="wardenship" name="wardenship" type="text"/></div>
-				<div><label>Arrear Salary : </label><input id="arrear-salary" name="arrear-salary" type="text"/></div>
-				<div><label>General Provident Fund : </label><input id="gpf" name="gpf" type="text"/></div>
-				<div><label>Income Tax : </label><input id="income-tax" name="income-tax" type="text"/></div>
-				<div><label>Group Insurance : </label><input id="group-insurance" name="group-insurance" type="text"/></div>
-				<div><label>Professional Tax : </label><input id="professional-tax" name="professional-tax" type="text"/></div>
-				<div><input name="submit" type="submit" value="Save""/></div>
-				<div>
-					<label>Next Month :</label>
-					<input name="submit" type="button" value="Same" onclick="fillSame()"/>
-					<input name="submit" type="button" value="New" onclick="clearAll()"/>
-				</div>
+				<table>
+					<tbody>
+						<tr><td><select id="financial-month" name="financial-month">
+							<option value="January">January</option>
+							<option value="February">February</option>
+							<option value="March">March</option>
+							<option value="April">April</option>
+							<option value="May">May</option>
+							<option value="June">June</option>
+							<option value="July">July</option>
+							<option value="August">August</option>
+							<option value="September">September</option>
+							<option value="October">October</option>
+							<option value="November">November</option>
+							<option value="December">December</option>
+						</select></td></tr>
+						<tr><td><div><label>Pay Band : </label></td><td><input id="pay-band" name="pay-band" type="text" /></div></td></tr>
+						<tr><td><div><label>Grade Pay : </label></td><td><input id="grade-pay" name="grade-pay" type="text"/></div></td></tr>
+						<tr><td><div><label>Dearness Allowance : </label></td><td><input id="da" name="da" type="text"/></div></td></tr>
+						<tr><td><div><label>Housing Rent Allowance : </label></td><td><input id="hra" name="hra" type="text"/></div></td></tr>
+						<tr><td><div><label>Travelling Allowance : </label></td><td><input id="ta" name="ta" type="text"/></div></td></tr>
+						<tr><td><div><label>Wardenship : </label></td><td><input id="wardenship" name="wardenship" type="text"/></div></td></tr>
+						<tr><td><div><label>Arrear Salary : </label></td><td><input id="arrear-salary" name="arrear-salary" type="text"/></div></td></tr>
+						<tr><td><div><label>General Provident Fund : </label></td><td><input id="gpf" name="gpf" type="text"/></div></td></tr>
+						<tr><td><div><label>Income Tax : </label></td><td><input id="income-tax" name="income-tax" type="text"/></div></td></tr>
+						<tr><td><div><label>Group Insurance : </label></td><td><input id="group-insurance" name="group-insurance" type="text"/></div></td></tr>
+						<tr><td><div><label>Professional Tax : </label></td><td><input id="professional-tax" name="professional-tax" type="text"/></div></td></tr>
+						<tr><td><div><input name="submit" type="submit" value="Save""/></div></td></tr>
+						<tr><td><div>
+							<label>Next Month :</label>
+							<input name="submit" type="button" value="Same" onclick="fillSame()"/>
+							<input name="submit" type="button" value="New" onclick="clearAll()"/>
+						</div></td></tr>
+					</tbody>
+				</table>
 			</form>
 			<form method="post" action="details-table.php" id="income-details-form">
-				<div><input name="submit" type="submit" value="Done"/></div>
+				<tr><td><div><input name="submit" type="submit" value="Done"/></div></td></tr>
 		</div>
 
 		<script type="text/javascript">
