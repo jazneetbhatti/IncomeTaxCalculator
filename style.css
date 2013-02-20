@@ -1,4 +1,6 @@
-table, td, th
+#details,
+#details td,
+#details th
 {
 	border-collapse: collapse;
 	border: 1px solid black;

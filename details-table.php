@@ -24,14 +24,18 @@
 			$result = mysql_query($query) or die(mysql_error());
 			$row = mysql_fetch_array($result);
 
-			echo "<div id=\"details-wrapper\">";
-			echo "<div>Faculty ID : ".$row['id']."</div>";
-			echo "<div>Faculty Name : ".$row['name']."</div>";
-			echo "<div>Designation : ".$row['designation']."</div>";
-			echo "<div>Financial Year : ".$row['year']."</div>";
+			echo "<div id=\"details-wrapper\" style=\"position: absolute; left: 35%; top: 5%\">";
+			echo "<table style=\"none\">";
+			echo "<tbody>";
+			echo "<tr><td><div style=\"font-weight: bold\">Faculty ID : </div></td><td>".$row['id']."</td></tr>";
+			echo "<tr><td><div style=\"font-weight: bold\">Faculty Name : </div></td><td>".$row['name']."</td></tr>";
+			echo "<tr><td><div style=\"font-weight: bold\">Designation : </div></td><td>".$row['designation']."</td></tr>";
+			echo "<tr><td><div style=\"font-weight: bold\">Financial Year : </div></td><td>".$row['year']."</td></tr>";
+			echo "</tbody>";
+			echo "</table>";
 			echo "</div>";
 		?>
-		<div id="table-wrapper">
+		<div id="table-wrapper" style="position: absolute; left: 17%; top: 20%">
 			<table id="details">
 				<tbody>
 					<tr>
@@ -114,7 +118,10 @@
 					?>
 				</tbody>
 			</table>
-			<div id="return-form-wrapper">
+
+			<br>
+
+			<div id="return-form-wrapper" style="position: relative; left: 45%">
 				<form method="post" action="index.php" id="return-form">
 					<div><input type="submit" value="Home"/></div>
 			</div>

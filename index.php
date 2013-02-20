@@ -6,9 +6,9 @@
 	</head>
 
 	<body>
-		<div><strong>Income Tax Calculator</strong></div>
+		<div style="position: absolute; left:40%; top: 10%; font-size: 30px"><strong>Income Tax Calculator</strong></div>
 		<br>
-		<div id="form-wrapper">
+		<div id="form-wrapper" style="position: absolute; left:40%; top: 35%;">
 			<form method="post" action="store-faculty-details.php" id="faculty-details-form">
 				<table>
 					<tbody>
