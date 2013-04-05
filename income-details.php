@@ -40,6 +40,11 @@
 									<option value="December">December</option>
 								</select>
 							</td>
+							<td><div>
+							<label>Next Month :</label>
+							<input name="submit" type="button" value="Same" onclick="fillSame()"/>
+							<input name="submit" type="button" value="New" onclick="clearAll()"/>
+						</div></td>
 						</tr>
 						<tr><td><div><label>Pay Band : </label></td><td><input id="pay-band" name="pay-band" type="text" /></div></td></tr>
 						<tr><td><div><label>Grade Pay : </label></td><td><input id="grade-pay" name="grade-pay" type="text"/></div></td></tr>
@@ -52,15 +57,19 @@
 						<tr><td><div><label>Income Tax : </label></td><td><input id="income-tax" name="income-tax" type="text"/></div></td></tr>
 						<tr><td><div><label>Group Insurance : </label></td><td><input id="group-insurance" name="group-insurance" type="text"/></div></td></tr>
 						<tr><td><div><label>Professional Tax : </label></td><td><input id="professional-tax" name="professional-tax" type="text"/></div></td></tr>
-						<tr><td><div style="position: relative; left: 78%"><input name="submit" type="submit" value="Save""/></div></td></tr>
 						<tr></tr>
 						<tr></tr>
+						<tr>
+							<td>
+								<div style="position: relative; left: 50%">
+									<input name="submit" type="submit" value="Back"/>
+									<input name="submit" type="submit" value="Save"/>
+									<input name="submit" type="submit" value="Next"/>
+								</div>
+							</td>
+						</tr>
 						<tr></tr>
-						<tr><td><div style="position: relative; left: 20%">
-							<label>Next Month :</label>
-							<input name="submit" type="button" value="Same" onclick="fillSame()"/>
-							<input name="submit" type="button" value="New" onclick="clearAll()"/>
-						</div></td></tr>
+						<tr></tr>
 					</tbody>
 				</table>
 			</form>
@@ -68,7 +77,7 @@
 			<br><br>
 
 			<form method="post" action="details-table.php" id="income-details-form">
-				<tr><td><div style="position: relative; left: 42%;"><input name="submit" type="submit" value="Done"/></div></td></tr>
+				<tr><td><div style="position: relative; left: 42%;"></div></td></tr>
 		</div>
 
 		<script type="text/javascript">
