@@ -1,0 +1,23 @@
+This is a Web App for calculating Income Tax.
+
+Dependency:
+===========
+PHP
+MySQL
+Apache web server( although any other should work fine too )
+
+Webpages:
+=========
+Copy all files in the webpages directory to the document root of your apache( or the web server you're using ) installation. Usually '/var/www/html' for Fedora or Red Hat, '/srv/www/htdocs' for openSUSE, '/var/www' for Ubuntu.
+
+Open db-connect.php and change the variables accordingly. Set $user as your Mysql database user, $password as the password of the Mysql database user, $database as the name of the database and $host as the name of the mysql host( leave unchanged if the database is on the same machine ).
+
+Database:
+=========
+Now create the tables in database with the database.sql file in the sql directory. If you want the name of the database to be incomeTaxDB, run this command to create the database :
+
+$ mysql -u root -p -e 'create database incomeTaxDB'
+$ mysql -u root -p incomeTaxDB < database.sql
+
+and enter password when prompted.
+
