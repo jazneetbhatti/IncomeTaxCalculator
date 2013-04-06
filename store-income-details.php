@@ -8,6 +8,15 @@
 	}
 	elseif( $_POST['submit'] == 'Back' )
 	{
+		session_unset();
+		session_destroy();
+
+		$query = "TRUNCATE TABLE income_details";
+		$result = mysql_query( $query ) or die( mysql_error() );
+
+		$query = "TRUNCATE TABLE faculty_details";
+		$result = mysql_query( $query ) or die( mysql_error() );
+
 		header("location: index.php");		
 	}
 	else

@@ -15,7 +15,16 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Income Tax Calculator</title>
-		<link rel="stylesheet" href="style.css" />
+		<style>
+			#details,
+			#details td,
+			#details th
+			{
+				border-collapse: collapse;
+				border: 1px solid black;
+				text-align: center;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -128,7 +137,7 @@
 						<div>
 							<input name="submit" type="submit" value="Back"/>
 							<input name="submit" type="submit" value="Home"/>
-							<input name="print" type="button" value="Print" onclick="window.print()"/>
+							<a href="print-page.php" target="_blank">Print</a>
 						</div>
 				</div>
 				</form>

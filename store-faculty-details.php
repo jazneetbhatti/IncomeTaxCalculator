@@ -2,13 +2,10 @@
 	session_start();
 	include "db-connect.php";
 
-	$_SESSION['fId'] = $_POST['faculty-id'];
-	$_SESSION['fYear'] = $_POST['financial-year'];
-
-	$fId = $_SESSION['fId'];
-	$fName = $_POST['faculty-name'];
-	$desig = $_POST['designation'];
-	$fYear = $_POST['financial-year'];
+	$fId = $_SESSION['fId'] = $_POST['faculty-id'];
+	$fName = $_SESSION['faculty-name'] = $_POST['faculty-name'];
+	$desig = $_SESSION['designation'] = $_POST['designation'];
+	$fYear = $_SESSION['financial-year'] = $_POST['financial-year'];
 
 	$query = "SELECT count(*) FROM faculty_details " .
 					 "WHERE id='$fId' AND year='$fYear'";
