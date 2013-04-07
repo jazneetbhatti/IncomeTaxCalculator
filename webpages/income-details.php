@@ -95,7 +95,6 @@
 			}
 			setSelectedIndex();
 
-			setSelectedIndex();
 			function fillSame()
 			{
 				var selected_index = document.getElementById( "financial-month" ).selectedIndex;
