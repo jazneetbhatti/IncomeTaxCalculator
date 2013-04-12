@@ -7,7 +7,7 @@
 
 	if( !isset( $_SESSION['fMonth']) )
 	{
-		$_SESSION['fMonth'] = "January";
+		$_SESSION['fMonth'] = "March";
 	}
 ?>
 <!DOCTYPE html>
@@ -22,12 +22,10 @@
 			<form method="post" action="store-income-details.php" id="income-details-form">
 				<table>
 					<tbody>
-						<tr><td><div>
-							<label>Month : </label></td>
+						<tr>
+							<td><div><label>Month : </label></td>
 							<td>
 								<select id="financial-month" name="financial-month">
-									<option value="January">January</option>
-									<option value="February">February</option>
 									<option value="March">March</option>
 									<option value="April">April</option>
 									<option value="May">May</option>
@@ -38,25 +36,75 @@
 									<option value="October">October</option>
 									<option value="November">November</option>
 									<option value="December">December</option>
+									<option value="January">January</option>
+									<option value="February">February</option>
 								</select>
 							</td>
-							<td><div>
-							<label>Next Month :</label>
-							<input name="submit" type="button" value="Same" onclick="fillSame()"/>
-							<input name="submit" type="button" value="New" onclick="clearAll()"/>
-						</div></td>
+							<td>
+								<div><label>Next Month :</label>
+									<input name="submit" type="button" value="Same" onclick="fillSame()"/>
+									<input name="submit" type="button" value="New" onclick="clearAll()"/>
+								</div>
+							</td>
 						</tr>
-						<tr><td><div><label>Pay Band : </label></td><td><input id="pay-band" name="pay-band" type="text" /></div></td></tr>
-						<tr><td><div><label>Grade Pay : </label></td><td><input id="grade-pay" name="grade-pay" type="text"/></div></td></tr>
-						<tr><td><div><label>Dearness Allowance : </label></td><td><input id="da" name="da" type="text"/></div></td></tr>
-						<tr><td><div><label>Housing Rent Allowance : </label></td><td><input id="hra" name="hra" type="text"/></div></td></tr>
-						<tr><td><div><label>Travelling Allowance : </label></td><td><input id="ta" name="ta" type="text"/></div></td></tr>
-						<tr><td><div><label>Wardenship : </label></td><td><input id="wardenship" name="wardenship" type="text"/></div></td></tr>
-						<tr><td><div><label>Arrear Salary : </label></td><td><input id="arrear-salary" name="arrear-salary" type="text"/></div></td></tr>
-						<tr><td><div><label>General Provident Fund : </label></td><td><input id="gpf" name="gpf" type="text"/></div></td></tr>
-						<tr><td><div><label>Income Tax : </label></td><td><input id="income-tax" name="income-tax" type="text"/></div></td></tr>
-						<tr><td><div><label>Group Insurance : </label></td><td><input id="group-insurance" name="group-insurance" type="text"/></div></td></tr>
-						<tr><td><div><label>Professional Tax : </label></td><td><input id="professional-tax" name="professional-tax" type="text"/></div></td></tr>
+						<tr>
+							<td><div><label>Pay Band :</label></td>
+							<td>
+								<select id="pay-band-select" name="pay-band-select">
+									<option value="1-2">1-2</option>
+									<option value="3-4">3-4</option>
+									<option value="5-6">5-6</option>
+									<option value="7-8">7-8</option>
+									<option value="9-10">9-10</option>
+								</select>
+							</td>
+						</tr>
+						<tr><td><div><label>Current Basic : </label></td><td><input id="current-basic" name="current-basic" type="number" step="any" min="0"/></div></td></tr>
+						<tr><td><div><label>Grade Pay : </label></td><td><input id="grade-pay" name="grade-pay" type="number" step="any" min="0"/></div></td></tr>
+						<tr>
+							<td><div><label>Dearness Allowance ( DA ) :</label></td>
+							<td>
+								<select id="da-select" name="da-select" onclick="clickedDA()">
+									<option value="1">1%</option>
+									<option value="2">2%</option>
+									<option value="3">3%</option>
+									<option value="4">4%</option>
+									<option value="other">Specify manually</option>
+								</select>
+							</td>
+							<td><input id="da" name="da" type="number" step="any" min="0"/></div></td>
+						</tr>
+						<tr>
+							<td><div><label>Housing Rent Allowance ( HRA ) :</label></td>
+							<td>
+								<select id="hra-select" name="hra-select">
+									<option value="1">1%</option>
+									<option value="2">2%</option>
+									<option value="3">3%</option>
+									<option value="4">4%</option>
+								</select>
+							</td>
+						</tr>
+						<tr><td><div><label>Actual HRA :</label></td><td><input id="actual-hra" name="actual-hra" type="number" step="any" min="0"/></div></td></tr>
+						<tr>
+							<td><div><label>Travelling Allowance ( TA ) :</label></td>
+							<td>
+								<select id="ta-select" name="ta-select" onclick="clickedTA()">
+									<option value="1">1%</option>
+									<option value="2">2%</option>
+									<option value="3">3%</option>
+									<option value="4">4%</option>
+									<option value="other">Specify manually</option>
+								</select>
+							</td>
+							<td><input id="ta" name="ta" type="number" step="any"/></div></td>
+						</tr>
+						<tr><td><div><label>Wardenship : </label></td><td><input id="wardenship" name="wardenship" type="number" step="any" min="0"/></div></td></tr>
+						<tr><td><div><label>Arrear Salary : </label></td><td><input id="arrear-salary" name="arrear-salary" type="number" step="any" min="0"/></div></td></tr>
+						<tr><td><div><label>General Provident Fund : </label></td><td><input id="gpf" name="gpf" type="number" step="any" min="0"/></div></td></tr>
+						<tr><td><div><label>Income Tax : </label></td><td><input id="income-tax" name="income-tax" type="number" step="any" min="0"/></div></td></tr>
+						<tr><td><div><label>Group Insurance : </label></td><td><input id="group-insurance" name="group-insurance" type="number" step="any" min="0"/></div></td></tr>
+						<tr><td><div><label>Professional Tax : </label></td><td><input id="professional-tax" name="professional-tax" type="number" step="any" min="0"/></div></td></tr>
 						<tr></tr>
 						<tr></tr>
 						<tr>
@@ -81,7 +129,7 @@
 		</div>
 
 		<script type="text/javascript">
-			function setSelectedIndex()
+			function initPage()
 			{
 				var element = document.getElementById( "financial-month" );
 				for( var i = 0; i < element.length; i++ )
@@ -92,25 +140,83 @@
 						break;
 					}
 				}
+
+
+				document.getElementById( "da" ).style.display = 'none';
+				document.getElementById( "ta" ).style.display = 'none';
 			}
-			setSelectedIndex();
+			initPage();
+
+			function clickedDA()
+			{
+				if( document.getElementById( "da-select" ).value == 'other' )
+					document.getElementById( "da" ).style.display = 'block';
+				else
+					document.getElementById( "da" ).style.display = 'none';
+			}
+
+			function clickedTA()
+			{
+				if( document.getElementById( "ta-select" ).value == 'other' )
+					document.getElementById( "ta" ).style.display = 'block';
+				else
+					document.getElementById( "ta" ).style.display = 'none';
+			}
 
 			function fillSame()
 			{
 				var selected_index = document.getElementById( "financial-month" ).selectedIndex;
 				document.getElementById( "financial-month" ).selectedIndex = selected_index + 1;
 
-				document.getElementById( "pay-band" ).value = "<?php echo $_SESSION['pay-band']; ?>";
+				document.getElementById( "current-basic" ).value = "<?php echo $_SESSION['current-basic']; ?>";
 				document.getElementById( "grade-pay" ).value = "<?php echo $_SESSION['grade-pay']; ?>";
-				document.getElementById( "da" ).value = "<?php echo $_SESSION['da']; ?>";
-				document.getElementById( "hra" ).value = "<?php echo $_SESSION['hra']; ?>";
-				document.getElementById( "ta" ).value = "<?php echo $_SESSION['ta']; ?>";
+				document.getElementById( "actual-hra" ).value = "<?php echo $_SESSION['actual-hra']; ?>";
 				document.getElementById( "wardenship" ).value = "<?php echo $_SESSION['wardenship']; ?>";
 				document.getElementById( "arrear-salary" ).value = "<?php echo $_SESSION['arrear-salary']; ?>";
 				document.getElementById( "gpf" ).value = "<?php echo $_SESSION['gpf']; ?>";
 				document.getElementById( "income-tax" ).value = "<?php echo $_SESSION['income-tax']; ?>";
 				document.getElementById( "group-insurance" ).value = "<?php echo $_SESSION['group-insurance']; ?>";
 				document.getElementById( "professional-tax" ).value = "<?php echo $_SESSION['professional-tax']; ?>";
+
+				var element = document.getElementById( "pay-band-select" );
+				for( var i = 0; i < element.length; i++ )
+				{
+					if( element.options[i].text == "<?php echo $_SESSION['pay-band-select']; ?>" )
+					{
+						document.getElementById( "pay-band-select" ).selectedIndex = i;
+						break;
+					}
+				}
+
+				element = document.getElementById( "da-select" );
+				for( var i = 0; i < element.length; i++ )
+				{
+					if( element.options[i].text == "<?php echo $_SESSION['da-select']; ?>" )
+					{
+						document.getElementById( "da-select" ).selectedIndex = i;
+						break;
+					}
+				}
+
+				element = document.getElementById( "hra-select" );
+				for( var i = 0; i < element.length; i++ )
+				{
+					if( element.options[i].text == "<?php echo $_SESSION['hra-select']; ?>" )
+					{
+						document.getElementById( "hra-select" ).selectedIndex = i;
+						break;
+					}
+				}
+
+				element = document.getElementById( "ta-select" );
+				for( var i = 0; i < element.length; i++ )
+				{
+					if( element.options[i].text == "<?php echo $_SESSION['ta-select']; ?>" )
+					{
+						document.getElementById( "ta-select" ).selectedIndex = i;
+						break;
+					}
+				}
 			}
 
 			function clearAll()
@@ -118,12 +224,10 @@
 				var selected_index = document.getElementById( "financial-month" ).selectedIndex;
 				document.getElementById( "financial-month" ).selectedIndex = selected_index + 1;
 
-				document.getElementById( "pay-band" ).value = "";
+				document.getElementById( "current-basic" ).value = "";
 				document.getElementById( "grade-pay" ).value = "";
-				document.getElementById( "da" ).value = "";
-				document.getElementById( "hra" ).value = "";
-				document.getElementById( "ta" ).value = "";
-				document.getElementById( "wardenship" ).value = "";
+				document.getElementById( "actual-hra" ).value = "";
+				document.getElementById( "wardenship" ).value =  "";
 				document.getElementById( "arrear-salary" ).value = "";
 				document.getElementById( "gpf" ).value = "";
 				document.getElementById( "income-tax" ).value = "";

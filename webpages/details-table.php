@@ -48,20 +48,22 @@
 
 			<br>
 
-			<div id="table-wrapper" style="position: relative; left: 25%">
+			<div id="table-wrapper" style="position: relative; left: 10%">
 				<table id="details">
 					<tbody>
 						<tr>
-							<th colspan="10">Payment</th>
+							<th colspan="12">Payment</th>
 							<th colspan="4">Deductions</th>
 						</tr>
 						<tr>
 	            <th>Month</th>
 	            <th>Year</th>
 	            <th>Pay Band</th>
+	            <th>Current Basic</th>
 	            <th>Grade Pay</th>
 	            <th>DA</th>
 	            <th>HRA</th>
+	            <th>Actual HRA</th>
 	            <th>TA</th>
 	            <th>Wardenship</th>
 	            <th>Arrear</th>
@@ -74,15 +76,16 @@
 						<?php
 							$query = "SELECT * FROM income_details WHERE id='$fId'";
 							$result = mysql_query($query) or die(mysql_error());
-							$pay_band_total = $grade_pay_total = $da_total = $hra_total = 0;
+							$current_basic_total = $grade_pay_total = $da_total = $hra_total = $actual_hra_total = 0;
 							$ta_total = $wardenship_total = $arrear_salary_total = $total_total = 0;
 							$gpf_total = $income_tax_total = $group_insurance_total = $professional_tax_total = 0;
 							while( $row = mysql_fetch_array($result) )
 							{
-								$pay_band_total += $row["pay_band"];
+								$current_basic_total += $row["current_basic"];
 								$grade_pay_total += $row["grade_pay"];
 								$da_total += $row["da"];
 								$hra_total += $row["hra"];
+								$actual_hra_total += $row["actual_hra"];
 								$ta_total += $row["ta"];
 								$wardenship_total += $row["wardenship"];
 								$arrear_salary_total += $row["arrear_salary"];
@@ -96,9 +99,11 @@
 								echo "<td>".$row["month"]."</td>";
 								echo "<td>".$fYear."</td>";
 								echo "<td>".$row["pay_band"]."</td>";
+								echo "<td>".$row["current_basic"]."</td>";
 								echo "<td>".$row["grade_pay"]."</td>";
 								echo "<td>".$row["da"]."</td>";
 								echo "<td>".$row["hra"]."</td>";
+								echo "<td>".$row["actual_hra"]."</td>";
 								echo "<td>".$row["ta"]."</td>";
 								echo "<td>".$row["wardenship"]."</td>";
 								echo "<td>".$row["arrear_salary"]."</td>";
@@ -113,18 +118,20 @@
 							echo "<tr>";
 							echo "<th>Total</th>";
 							echo "<th></th>";
-		          echo "<th>".$pay_band_total."</th>";
-		          echo "<th>".$grade_pay_total."</th>";
-		          echo "<th>".$da_total."</th>";
-		          echo "<th>".$hra_total."</th>";
-		          echo "<th>".$ta_total."</th>";
-		          echo "<th>".$wardenship_total."</th>";
-		          echo "<th>".$arrear_salary_total."</th>";
-		          echo "<th>".$total_total."</th>";
-		          echo "<th>".$gpf_total."</th>";
-		          echo "<th>".$income_tax_total."</th>";
-		          echo "<th>".$group_insurance_total."</th>";
-		          echo "<th>".$professional_tax_total."</th>";
+							echo "<th></th>";
+		          echo "<th>".number_format((float)$current_basic_total, 2, '.', '')."</th>";
+		          echo "<th>".number_format((float)$grade_pay_total, 2, '.', '')."</th>";
+		          echo "<th>".number_format((float)$da_total, 2, '.', '')."</th>";
+		          echo "<th>".number_format((float)$hra_total, 2, '.', '')."</th>";
+		          echo "<th>".number_format((float)$actual_hra_total, 2, '.', '')."</th>";
+		          echo "<th>".number_format((float)$ta_total, 2, '.', '')."</th>";
+		          echo "<th>".number_format((float)$wardenship_total, 2, '.', '')."</th>";
+		          echo "<th>".number_format((float)$arrear_salary_total, 2, '.', '')."</th>";
+		          echo "<th>".number_format((float)$total_total, 2, '.', '')."</th>";
+		          echo "<th>".number_format((float)$gpf_total, 2, '.', '')."</th>";
+		          echo "<th>".number_format((float)$income_tax_total, 2, '.', '')."</th>";
+		          echo "<th>".number_format((float)$group_insurance_total, 2, '.', '')."</th>";
+		          echo "<th>".number_format((float)$professional_tax_total, 2, '.', '')."</th>";
 							echo "</tr>";
 						?>
 					</tbody>

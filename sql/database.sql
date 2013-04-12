@@ -50,18 +50,20 @@ DROP TABLE IF EXISTS `income_details`;
 CREATE TABLE `income_details` (
   `id` varchar(10) DEFAULT NULL,
   `month` varchar(10) DEFAULT NULL,
-  `pay_band` int(10) DEFAULT NULL,
-  `grade_pay` int(10) DEFAULT NULL,
-  `da` int(10) DEFAULT NULL,
-  `hra` int(10) DEFAULT NULL,
-  `ta` int(10) DEFAULT NULL,
-  `wardenship` int(10) DEFAULT NULL,
-  `arrear_salary` int(10) DEFAULT NULL,
-  `total` int(10) DEFAULT NULL,
-  `gpf` int(10) DEFAULT NULL,
-  `income_tax` int(10) DEFAULT NULL,
-  `group_insurance` int(10) DEFAULT NULL,
-  `prof_tax` int(10) DEFAULT NULL
+  `pay_band` varchar(10) DEFAULT NULL,
+  `current_basic` decimal(10,2) DEFAULT NULL,
+  `grade_pay` decimal(10,2) DEFAULT NULL,
+  `da` decimal(10,2) DEFAULT NULL,
+  `hra` decimal(10,2) DEFAULT NULL,
+  `actual_hra` decimal(10,2) DEFAULT NULL,
+  `ta` decimal(10,2) DEFAULT NULL,
+  `wardenship` decimal(10,2) DEFAULT NULL,
+  `arrear_salary` decimal(10,2) DEFAULT NULL,
+  `total` decimal(10,2) DEFAULT NULL,
+  `gpf` decimal(10,2) DEFAULT NULL,
+  `income_tax` decimal(10,2) DEFAULT NULL,
+  `group_insurance` decimal(10,2) DEFAULT NULL,
+  `prof_tax` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -83,4 +85,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-04-06 22:32:03
+-- Dump completed on 2013-04-12 15:56:08
