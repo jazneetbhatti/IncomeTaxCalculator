@@ -6,6 +6,14 @@
 	}
 
 	include "db-connect.php";
+
+	$Salary = $_SESSION['total-total'] - $_SESSION['actual-hra-total'];
+	$HRA = $_SESSION['actual-hra-total'];
+	$Gross_Salary = $_SESSION['total-total'];
+	$Less_Exempt = min( floatval($Salary)/10 - $HRA, $HRA, 0.4 * floatval($Salary) );
+	$Salary_Income = $Salary - $Less_Exempt;
+	$Less_Deduction = $_SESSION['professional-tax-total'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -128,17 +136,17 @@
 				(Annexure-I)
 			</b>
 		</p>
-		</td><td style="vertical-align:top">&nbsp; &nbsp; :&nbsp; &nbsp;    <b>Rs.</b></td></tr>
+		</td><td style="vertical-align:top">&nbsp; &nbsp; :&nbsp; &nbsp;    <b>Rs. <?php echo number_format($Salary, 2, '.', '') ?></b></td></tr>
 		<tr><td>
 		<p>
 			2.<b>    House Rent Allowance </b>(HRA) Recieved/ Receivable               
 		</p>
-		</td><td style="vertical-align:top">&nbsp; &nbsp; :&nbsp; &nbsp;    <b>Rs.</b></td></tr>
+		</td><td style="vertical-align:top">&nbsp; &nbsp; :&nbsp; &nbsp;    <b>Rs. <?php echo number_format($HRA, 2, '.', '') ?></b></td></tr>
 		<tr><td>
 		<p>
 			3. <b>  Gross Salary Income </b>(1+2)
 		</p>
-		</td><td style="vertical-align:top">&nbsp; &nbsp; :&nbsp; &nbsp;    <b>Rs.</b></td></tr>
+		</td><td style="vertical-align:top">&nbsp; &nbsp; :&nbsp; &nbsp;    <b>Rs. <?php echo number_format($Gross_Salary, 2, '.', '') ?></b></td></tr>
 		<tr><td><p>
 			4.<b>    <u>Less</u>: Exempt U/S 10 </b>(House Rent Allowance)
 		</p>
@@ -152,7 +160,7 @@
 			&nbsp; &nbsp; &nbsp; &nbsp;                in excess of 1/10<sup>th</sup> of the salary due for the relevant
 		</p>
 		<p>
-			&nbsp; &nbsp; &nbsp; &nbsp;                period
+			&nbsp; &nbsp; &nbsp; &nbsp;                period ( Rs. <?php echo number_format(floatval($Salary)/10 - $HRA, 2, '.', '') ?> )
 		</p>
 		<p>
 			<b>
@@ -163,7 +171,7 @@
 			&nbsp; &nbsp;        (b)    The actual amount of HRA recieved in respect of the
 		</p>
 		<p>
-			&nbsp; &nbsp; &nbsp; &nbsp;                 relevant period
+			&nbsp; &nbsp; &nbsp; &nbsp;                 relevant period ( Rs. <?php echo number_format($HRA, 2, '.', '') ?>)
 		</p>
 		<p>
 			<b>
@@ -174,20 +182,20 @@
 			&nbsp; &nbsp;        (c)    40% of salary due to the Employer for the relevant
 		</p>
 		<p>
-			&nbsp; &nbsp; &nbsp; &nbsp;                 period
+			&nbsp; &nbsp; &nbsp; &nbsp;                 period ( Rs. <?php echo number_format(0.4 * floatval($Salary), 2, '.', '') ?> )
 		</p>
-		</td><td style="vertical-align:top">&nbsp; &nbsp; :&nbsp; &nbsp;    <b>Rs.</b></td></tr>
+		</td><td style="vertical-align:top">&nbsp; &nbsp; :&nbsp; &nbsp;    <b>Rs. <?php echo number_format($Less_Exempt, 2, '.', '') ?></b></td></tr>
 		<tr><td><p>
 			5.    Salary Income ( 3 - 4 )                                                                 
 		</p>
-		</td><td style="vertical-align:top">&nbsp; &nbsp; :&nbsp; &nbsp;    <b>Rs.</b></td></tr>
+		</td><td style="vertical-align:top">&nbsp; &nbsp; :&nbsp; &nbsp;    <b>Rs. <?php echo number_format($Salary_Income, 2, '.', '') ?></b></td></tr>
 		<tr><td><p>
 			6.    <b>Deduction U/S 16</b>
 		</p></td></tr>
 		<tr><td><p>
-			&nbsp; &nbsp;               <b><u>Less: </u></b>Professional Tax
+			&nbsp; &nbsp;               <b><u>Less:</u> </b>Professional Tax
 		</p>
-		</td><td style="vertical-align:top">&nbsp; &nbsp; :&nbsp; &nbsp;    <b>Rs.</b></td></tr>
+		</td><td style="vertical-align:top">&nbsp; &nbsp; :&nbsp; &nbsp;    <b>Rs. <?php echo number_format($Less_Deduction, 2, '.', '') ?></b></td></tr>
 		<tr><td>
 		<p>
 			<b>7.    Net Salary Income </b>
