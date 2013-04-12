@@ -74,7 +74,7 @@
 	            <th>Prof. Tax</th>
 						</tr>
 						<?php
-							$query = "SELECT * FROM income_details WHERE id='$fId'";
+							$query = "SELECT * FROM income_details WHERE id='$fId' order by year, month";
 							$result = mysql_query($query) or die(mysql_error());
 							$current_basic_total = $grade_pay_total = $da_total = $hra_total = $actual_hra_total = 0;
 							$ta_total = $wardenship_total = $arrear_salary_total = $total_total = 0;
@@ -93,11 +93,11 @@
 								$gpf_total += $row["gpf"];
 								$income_tax_total += $row["income_tax"];
 								$group_insurance_total += $row["group_insurance"];
-								$professional_tax_total += $row["professional_tax"];
-		
+								$professional_tax_total += $row["prof_tax"];
+
 								echo "<tr>";
-								echo "<td>".$row["month"]."</td>";
-								echo "<td>".$fYear."</td>";
+								echo "<td>".date("F", mktime(0, 0, 0, $row["month"], 1))."</td>";
+								echo "<td>".$row["year"]."</td>";
 								echo "<td>".$row["pay_band"]."</td>";
 								echo "<td>".$row["current_basic"]."</td>";
 								echo "<td>".$row["grade_pay"]."</td>";
@@ -114,7 +114,21 @@
 								echo "<td>".$row["prof_tax"]."</td>";
 								echo "</tr>";
 							}
-			
+
+							$_SESSION['current-basic-total'] = $current_basic_total;
+							$_SESSION['grade-pay-total'] = $grade_pay_total;
+							$_SESSION['da-total'] = $da_total;
+							$_SESSION['hra-total'] = $hra_total;
+							$_SESSION['actual-hra-total'] = $actual_hra_total;
+							$_SESSION['ta-total'] = $ta_total;
+							$_SESSION['wardenship-total'] = $wardenship_total;
+							$_SESSION['arrear-salary-total'] = $arrear_salary_total;
+							$_SESSION['total-total'] = $total_total;
+							$_SESSION['gpf-total'] = $gpf_total;
+							$_SESSION['income-tax-total'] = $income_tax_total;
+							$_SESSION['group-insurance-total'] = $group_insurance_total;
+							$_SESSION['professional-tax-total'] = $professional_tax_total;
+							
 							echo "<tr>";
 							echo "<th>Total</th>";
 							echo "<th></th>";

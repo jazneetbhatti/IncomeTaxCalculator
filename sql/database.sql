@@ -50,6 +50,7 @@ DROP TABLE IF EXISTS `income_details`;
 CREATE TABLE `income_details` (
   `id` varchar(10) DEFAULT NULL,
   `month` varchar(10) DEFAULT NULL,
+  `year` int(4) DEFAULT NULL,
   `pay_band` varchar(10) DEFAULT NULL,
   `current_basic` decimal(10,2) DEFAULT NULL,
   `grade_pay` decimal(10,2) DEFAULT NULL,
@@ -85,4 +86,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-04-12 15:56:08
+-- Dump completed on 2013-04-12 18:35:08

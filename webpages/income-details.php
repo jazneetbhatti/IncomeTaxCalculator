@@ -7,7 +7,7 @@
 
 	if( !isset( $_SESSION['fMonth']) )
 	{
-		$_SESSION['fMonth'] = "March";
+		$_SESSION['fMonth'] = "03";
 	}
 ?>
 <!DOCTYPE html>
@@ -26,18 +26,18 @@
 							<td><div><label>Month : </label></td>
 							<td>
 								<select id="financial-month" name="financial-month">
-									<option value="March">March</option>
-									<option value="April">April</option>
-									<option value="May">May</option>
-									<option value="June">June</option>
-									<option value="July">July</option>
-									<option value="August">August</option>
-									<option value="September">September</option>
-									<option value="October">October</option>
-									<option value="November">November</option>
-									<option value="December">December</option>
-									<option value="January">January</option>
-									<option value="February">February</option>
+									<option value="03">March'<?php echo $_SESSION['financial-year'] % 100; ?></option>
+									<option value="04">April'<?php echo $_SESSION['financial-year'] % 100; ?></option>
+									<option value="05">May'<?php echo $_SESSION['financial-year'] % 100; ?></option>
+									<option value="06">June'<?php echo $_SESSION['financial-year'] % 100; ?></option>
+									<option value="07">July'<?php echo $_SESSION['financial-year'] % 100; ?></option>
+									<option value="08">August'<?php echo $_SESSION['financial-year'] % 100; ?></option>
+									<option value="09">September'<?php echo $_SESSION['financial-year'] % 100; ?></option>
+									<option value="10">October'<?php echo $_SESSION['financial-year'] % 100; ?></option>
+									<option value="11">November'<?php echo $_SESSION['financial-year'] % 100; ?></option>
+									<option value="12">December'<?php echo $_SESSION['financial-year'] % 100; ?></option>
+									<option value="01">January'<?php echo $_SESSION['financial-year'] % 100 + 1; ?></option>
+									<option value="02">February'<?php echo $_SESSION['financial-year'] % 100 + 1; ?></option>
 								</select>
 							</td>
 							<td>
@@ -134,7 +134,7 @@
 				var element = document.getElementById( "financial-month" );
 				for( var i = 0; i < element.length; i++ )
 				{
-					if( element.options[i].text == "<?php echo $_SESSION['fMonth']; ?>" )
+					if( element.options[i].value == "<?php echo $_SESSION['fMonth']; ?>" )
 					{
 						document.getElementById( "financial-month" ).selectedIndex = i;
 						break;
@@ -181,7 +181,7 @@
 				var element = document.getElementById( "pay-band-select" );
 				for( var i = 0; i < element.length; i++ )
 				{
-					if( element.options[i].text == "<?php echo $_SESSION['pay-band-select']; ?>" )
+					if( element.options[i].value == "<?php echo $_SESSION['pay-band-select']; ?>" )
 					{
 						document.getElementById( "pay-band-select" ).selectedIndex = i;
 						break;
@@ -191,7 +191,7 @@
 				element = document.getElementById( "da-select" );
 				for( var i = 0; i < element.length; i++ )
 				{
-					if( element.options[i].text == "<?php echo $_SESSION['da-select']; ?>" )
+					if( element.options[i].value == "<?php echo $_SESSION['da-select']; ?>" )
 					{
 						document.getElementById( "da-select" ).selectedIndex = i;
 						break;
@@ -201,7 +201,7 @@
 				element = document.getElementById( "hra-select" );
 				for( var i = 0; i < element.length; i++ )
 				{
-					if( element.options[i].text == "<?php echo $_SESSION['hra-select']; ?>" )
+					if( element.options[i].value == "<?php echo $_SESSION['hra-select']; ?>" )
 					{
 						document.getElementById( "hra-select" ).selectedIndex = i;
 						break;
@@ -211,12 +211,15 @@
 				element = document.getElementById( "ta-select" );
 				for( var i = 0; i < element.length; i++ )
 				{
-					if( element.options[i].text == "<?php echo $_SESSION['ta-select']; ?>" )
+					if( element.options[i].value == "<?php echo $_SESSION['ta-select']; ?>" )
 					{
 						document.getElementById( "ta-select" ).selectedIndex = i;
 						break;
 					}
 				}
+
+				clickedDA();
+				clickedTA();
 			}
 
 			function clearAll()

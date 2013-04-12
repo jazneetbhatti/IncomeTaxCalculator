@@ -25,10 +25,19 @@
 	{
 		$fId = $_SESSION['fId'];
 		$fMonth = $_SESSION['fMonth'] = $_POST['financial-month'];
+
+		$fYear = $_SESSION['financial-year'];
+		if( $fMonth == '01' || $fMonth == '02' )
+			$fYear += 1;
+
 		$pay_band = $_SESSION['pay-band-select'] = $_POST['pay-band-select'];
 		$current_basic = $_SESSION['current-basic'] = $_POST['current-basic'];
 		$grade_pay = $_SESSION['grade-pay'] = $_POST['grade-pay'];
 		$basic_pay = $current_basic + $grade_pay;
+
+		$_SESSION['da-select'] = $_POST['da-select'];
+		$_SESSION['hra-select'] = $_POST['hra-select'];
+		$_SESSION['ta-select'] = $_POST['ta-select'];
 
 		if( $_POST['da-select'] != 'other')
 		{
@@ -36,7 +45,7 @@
 		}
 		else
 		{
-			$da = $_SESSION['da'] = $_POST['da'];
+			$da = $_SESSION['da'] = ceil( $basic_pay * floatval( $_POST['da'] ) );
 		}
 
 		$hra = $_SESSION['actual-hra'] = ceil( $basic_pay * floatval( $_POST['hra-select'] ) );
@@ -48,7 +57,7 @@
 		}
 		else
 		{
-			$ta = $_SESSION['ta'] = $_POST['ta'];
+			$ta = $_SESSION['da'] = ceil( $basic_pay * floatval( $_POST['ta'] ) );
 		}
 
 		$wardenship = $_SESSION['wardenship'] = $_POST['wardenship'];
@@ -68,7 +77,7 @@
 		if( $row[0] == 0 )
 		{
 			$query = "INSERT INTO income_details " .
-							 "values( '$fId', '$fMonth', '$pay_band', '$current_basic', '$grade_pay', '$da', '$hra', '$actual_hra', '$ta', '$wardenship', '$arrear_salary', '$total', '$gpf', '$income_tax', '$group_insurance', '$professional_tax' )";
+							 "values( '$fId', '$fMonth', '$fYear','$pay_band', '$current_basic', '$grade_pay', '$da', '$hra', '$actual_hra', '$ta', '$wardenship', '$arrear_salary', '$total', '$gpf', '$income_tax', '$group_insurance', '$professional_tax' )";
 		}
 		else
 		{
