@@ -69,7 +69,7 @@
 									<option value="2">2%</option>
 									<option value="3">3%</option>
 									<option value="4">4%</option>
-									<option value="other">Specify manually</option>
+									<option value="other">Specify rate</option>
 								</select>
 							</td>
 							<td><input id="da" name="da" type="number" step="any" min="0"/></div></td>

@@ -48,7 +48,7 @@
 
 			<br>
 
-			<div id="table-wrapper" style="position: relative; left: 10%">
+			<div id="table-wrapper" style="position: relative; left: 5%">
 				<table id="details">
 					<tbody>
 						<tr>

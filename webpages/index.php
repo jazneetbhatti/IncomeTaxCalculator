@@ -18,18 +18,18 @@
 						<tr><td><label>Financial Year : </label></td>
 							<td>
 								<select id="financial-year" name="financial-year">
-									<option value="2005">2005</option>
-									<option value="2006">2006</option>
-									<option value="2007">2007</option>
-									<option value="2008">2008</option>
-									<option value="2009">2009</option>
-									<option value="2010">2010</option>
-									<option value="2011">2011</option>
-									<option value="2012" selected="selected">2012</option>
-									<option value="2013">2013</option>
-									<option value="2014">2014</option>
-									<option value="2015">2015</option>
-									<option value="2016">2016</option>
+									<option value="2005">2005-06</option>
+									<option value="2006">2006-07</option>
+									<option value="2007">2007-08</option>
+									<option value="2008">2008-09</option>
+									<option value="2009">2009-10</option>
+									<option value="2010">2010-11</option>
+									<option value="2011">2011-12</option>
+									<option value="2012">2012-13</option>
+									<option value="2013" selected="selected">2013-14</option>
+									<option value="2014">2014-15</option>
+									<option value="2015">2015-16</option>
+									<option value="2016">2016-17</option>
 								</select>
 							</td>
 						</tr>
