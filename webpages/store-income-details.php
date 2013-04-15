@@ -41,23 +41,23 @@
 
 		if( $_POST['da-select'] != 'other')
 		{
-			$da = $_SESSION['da'] = ceil( $basic_pay * floatval( $_POST['da-select'] ) );
+			$da = $_SESSION['da'] = ceil( ( $basic_pay * floatval( $_POST['da-select'] ) ) / 100 );
 		}
 		else
 		{
-			$da = $_SESSION['da'] = ceil( $basic_pay * floatval( $_POST['da'] ) );
+			$da = $_SESSION['da'] = ceil( ( $basic_pay * floatval( $_POST['da'] ) ) / 100 );
 		}
 
-		$hra = $_SESSION['actual-hra'] = ceil( $basic_pay * floatval( $_POST['hra-select'] ) );
+		$hra = $_SESSION['actual-hra'] = ceil( ( $basic_pay * floatval( $_POST['hra-select'] ) ) / 100 );
 		$actual_hra = $_SESSION['actual-hra'] = $_POST['actual-hra'];
 
 		if( $_POST['ta-select'] != 'other')
 		{
-			$ta = $_SESSION['da'] = ceil( $basic_pay * floatval( $_POST['ta-select'] ) );
+			$ta = $_SESSION['ta'] = ceil( ( $basic_pay * floatval( $_POST['ta-select'] ) ) / 100 );
 		}
 		else
 		{
-			$ta = $_SESSION['da'] = ceil( $basic_pay * floatval( $_POST['ta'] ) );
+			$ta = $_SESSION['ta'] = ceil( ( $basic_pay * floatval( $_POST['ta'] ) ) / 100 );
 		}
 
 		$wardenship = $_SESSION['wardenship'] = $_POST['wardenship'];
