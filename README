@@ -1,14 +1,21 @@
 This is a Web App for calculating Total Income and Income Tax.
 
-Dependency:
+Requirements:
 ===========
+For both Linux and Windows:
+--------------------------
 PHP
 MySQL
 Apache web server( although any other should work fine too )
+phpMyAdmin(optional)
+
+For Windows only:
+----------------
+XAMPP : Windows users could instead just install xampp, as it installs all the above mentioned requirements.
 
 Webpages:
 =========
-Copy all files in the webpages directory to the document root of your apache( or the web server you're using ) installation. Usually '/var/www/html' for Fedora or Red Hat, '/srv/www/htdocs' for openSUSE, '/var/www' for Ubuntu.
+Copy all files in the webpages directory to the document root of your apache( or the web server you're using ) installation : usually '/var/www/html' for Fedora or Red Hat, '/srv/www/htdocs' for openSUSE, '/var/www' for Ubuntu, 'C://Program Files/xampp/htdocs' for Windows.
 
 Open db-connect.php and change the variables accordingly. Set $user as your Mysql database user, $password as the password of the Mysql database user, $database as the name of the database and $host as the name of the mysql host( leave unchanged if the database is on the same machine ).
 
@@ -20,3 +27,4 @@ $ mysql -u root -p -e 'create database incomeTaxDB'
 and run this command to import the database( assuming the database file is in the current directory. If not, specify the full path of database.sql )
 $ mysql -u root -p incomeTaxDB < database.sql
 
+If phpMyAdmin is installed, the database.sql database can directly be imported by logging in to 'localhost/phpmyadmin' and importing the database.
