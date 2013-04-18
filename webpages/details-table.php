@@ -158,10 +158,11 @@
 						<div>
 							<input name="submit" type="submit" value="Back"/>
 							<input name="submit" type="submit" value="Home"/>
-							<a href="print-page.php" target="_blank">Print</a>
+							<a href="print-page.php" target="_blank">Print in Document format</a>
+							<a href="print-table.php" target="_blank">Print in Table format</a>
 						</div>
+					</form>
 				</div>
-				</form>
 			</div>
 		</div>
 	</body>

@@ -10,7 +10,7 @@
 	$Salary = $_SESSION['total-total'] - $_SESSION['actual-hra-total'];
 	$HRA = $_SESSION['actual-hra-total'];
 	$Gross_Salary = $_SESSION['total-total'];
-	$Less_Exempt = min( floatval($Salary)/10 - $HRA, $HRA, 0.4 * floatval($Salary) );
+	$Less_Exempt = min( floatval($Salary) / 10 - $HRA, $HRA, 0.4 * floatval($Salary) );
 	$Salary_Income = $Salary - $Less_Exempt;
 	$Less_Deduction = $_SESSION['professional-tax-total'];
 
