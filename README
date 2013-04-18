@@ -1,4 +1,4 @@
-This is a Web App for calculating Income Tax.
+This is a Web App for calculating Total Income and Income Tax.
 
 Dependency:
 ===========
@@ -15,9 +15,8 @@ Open db-connect.php and change the variables accordingly. Set $user as your Mysq
 Database:
 =========
 Now create the tables in database with the database.sql file in the sql directory. If you want the name of the database to be incomeTaxDB, run this command to create the database :
-
 $ mysql -u root -p -e 'create database incomeTaxDB'
-$ mysql -u root -p incomeTaxDB < database.sql
 
-and enter password when prompted.
+and run this command to import the database( assuming the database file is in the current directory. If not, specify the full path of database.sql )
+$ mysql -u root -p incomeTaxDB < database.sql
 
