@@ -1,13 +1,17 @@
 <?php
 	session_start();
+
+// Redirect users to the home page if they try to access this page manually through the url
+// without creating a faculty details entry
 	if( !isset( $_SESSION['fId'] ) )
 	{
 		header("location: index.php");
 	}
 
+// Set up a session variable to set the default month in the form
 	if( !isset( $_SESSION['fMonth']) )
 	{
-		$_SESSION['fMonth'] = "03";
+		$_SESSION['fMonth'] = "03"; // March is the beginning of the financial year
 	}
 ?>
 <!DOCTYPE html>
@@ -26,6 +30,7 @@
 							<td><div><label>Month : </label></td>
 							<td>
 								<select id="financial-month" name="financial-month">
+									<!-- The php code just prints the last two digits of the year i.e. 13 for 2013 -->
 									<option value="03">March'<?php echo $_SESSION['financial-year'] % 100; ?></option>
 									<option value="04">April'<?php echo $_SESSION['financial-year'] % 100; ?></option>
 									<option value="05">May'<?php echo $_SESSION['financial-year'] % 100; ?></option>
@@ -51,6 +56,7 @@
 							<td><div><label>Pay Band :</label></td>
 							<td>
 								<select id="pay-band-select" name="pay-band-select">
+									<!-- The options here can be customized -->
 									<option value="1-2">1-2</option>
 									<option value="3-4">3-4</option>
 									<option value="5-6">5-6</option>
@@ -65,6 +71,7 @@
 							<td><div><label>Dearness Allowance ( DA ) :</label></td>
 							<td>
 								<select id="da-select" name="da-select" onclick="clickedDA()">
+									<!-- The options here can be customized -->
 									<option value="1">1%</option>
 									<option value="2">2%</option>
 									<option value="3">3%</option>
@@ -78,6 +85,7 @@
 							<td><div><label>Housing Rent Allowance ( HRA ) :</label></td>
 							<td>
 								<select id="hra-select" name="hra-select">
+									<!-- The options here can be customized -->
 									<option value="1">1%</option>
 									<option value="2">2%</option>
 									<option value="3">3%</option>
@@ -90,6 +98,7 @@
 							<td><div><label>Travelling Allowance ( TA ) :</label></td>
 							<td>
 								<select id="ta-select" name="ta-select" onclick="clickedTA()">
+									<!-- The options here can be customized -->
 									<option value="1">1%</option>
 									<option value="2">2%</option>
 									<option value="3">3%</option>
@@ -129,8 +138,10 @@
 		</div>
 
 		<script type="text/javascript">
+		// Set up the initial details for the page
 			function initPage()
 			{
+				// Set the month in the drop-down to the month for which details were last entered
 				var element = document.getElementById( "financial-month" );
 				for( var i = 0; i < element.length; i++ )
 				{
@@ -142,11 +153,15 @@
 				}
 
 
+				// Initially hide the text field for DA and TA. To be displayed only when the value
+				// in the drop-down is set to 'other'
 				document.getElementById( "da" ).style.display = 'none';
 				document.getElementById( "ta" ).style.display = 'none';
 			}
-			initPage();
+			initPage(); // Execute the function as soon as the script loads
 
+			// Called whenever an entry is selected in the DA drop-down to see if text field needs
+			// to be displayed
 			function clickedDA()
 			{
 				if( document.getElementById( "da-select" ).value == 'other' )
@@ -155,6 +170,8 @@
 					document.getElementById( "da" ).style.display = 'none';
 			}
 
+			// Called whenever an entry is selected in the TA drop-down to see if text field needs
+			// to be displayed
 			function clickedTA()
 			{
 				if( document.getElementById( "ta-select" ).value == 'other' )
@@ -163,6 +180,9 @@
 					document.getElementById( "ta" ).style.display = 'none';
 			}
 
+			// Called when user clicks the Same button
+			// This function increments the month and sets the values in the form to the ones last entered
+			// by fetching them from the session variables
 			function fillSame()
 			{
 				var selected_index = document.getElementById( "financial-month" ).selectedIndex;
@@ -222,6 +242,9 @@
 				clickedTA();
 			}
 
+			// Called when user clicks the New button
+			// This function increments the month and sets empty values in the rest of the form
+			// so user can provide fresh values
 			function clearAll()
 			{
 				var selected_index = document.getElementById( "financial-month" ).selectedIndex;
